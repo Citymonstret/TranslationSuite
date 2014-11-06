@@ -1,0 +1,5 @@
+name: ${project.name}
+main: com.intellectualsites.translation.bukkit.TranslationPlugin
+version: ${project.version}
+author: Citymonstret
+description: Java Translation API

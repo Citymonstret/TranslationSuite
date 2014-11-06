@@ -57,16 +57,27 @@ public class TranslationManager {
 
     public TranslationManager addTranslation(String key, TranslationAsset a) {
         String eKey = key + "." + a.getLang().toString();
+        eKey = eKey.toLowerCase();
         if(translatedObjects.containsKey(eKey))
             translatedObjects.remove(eKey);
         translatedObjects.put(eKey, a);
         return instance();
     }
 
-    public TranslationAsset getTranslated(String key, TranslationLanguage language) {
-        String eKey = key + "." + language.toString();
+    public TranslationAsset getTranslated(String key, String language) {
+        String eKey = key + "." + language;
+        eKey = eKey.toLowerCase();
         if(!translatedObjects.containsKey(eKey))
             return new TranslationAsset(getDefault(key), getDefault(key).getKey(), TranslationLanguage.englishAmerican);
+        return translatedObjects.get(key);
+    }
+
+    public TranslationAsset getTranslated(String key, TranslationLanguage language) {
+        String eKey = key + "." + language.toString();
+        eKey = eKey.toLowerCase();
+        if(!translatedObjects.containsKey(eKey)) {
+            return new TranslationAsset(getDefault(key), getDefault(key).getDefaultValue(), TranslationLanguage.englishAmerican);
+        }
         return translatedObjects.get(eKey);
     }
 

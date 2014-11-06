@@ -30,6 +30,14 @@ public class YamlTranslationFile extends TranslationFile {
     private TranslationManager manager;
 
     /**
+     * Reload
+     */
+    public void reload() {
+        this.map = new HashMap<String, String>();
+        this.read();
+    }
+
+    /**
      * Constructor
      * @param path save path
      * @param language translation language
@@ -166,7 +174,7 @@ public class YamlTranslationFile extends TranslationFile {
             options.setAllowUnicode(true);
             options.setPrettyFlow(true);
             options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-            options.setDefaultScalarStyle(DumperOptions.ScalarStyle.PLAIN);
+            options.setDefaultScalarStyle(DumperOptions.ScalarStyle.SINGLE_QUOTED);
             yaml = new Yaml(options);
             yaml.setName(name + "." + language.toString());
         }

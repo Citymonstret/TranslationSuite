@@ -33,4 +33,7 @@ public class TestAnnotations {
 
     @Translation
     private static final String NULL_POINTER_EXCEPTION = "nånting är fel...";
+
+    @Translation
+    private static final String POTATOES_ARE_COWS = "Hello world";
 }
