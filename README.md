@@ -6,9 +6,13 @@ Desc
 Java translation file implementation
 made easy.
 
+JSON
+--
+The json parser json-io and json-simple (included in the pom.xml)
+
 Yaml
 --
-The YAML parser required SnakeYaml (included in the pom.xml) 
+The YAML parser requires SnakeYaml (included in the pom.xml) 
 
 Examples
 --
