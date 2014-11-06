@@ -16,6 +16,11 @@ The YAML parser requires SnakeYaml (included in the pom.xml)
 
 Examples
 --
+
+Bukkit example: https://github.com/Sauilitired/TranslationSuite/blob/master/src/main/java/com/intellectualsites/translation/bukkit/TranslationPlugin.java
+
+Java Example
+
 ```java
 // This will create a new manager
 TranslationManager manager = TranslationManager.instance();
