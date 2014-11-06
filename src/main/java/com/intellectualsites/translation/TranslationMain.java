@@ -11,7 +11,7 @@ public class TranslationMain {
         assert staticAccess;
 
         // This will create a new manager
-        TranslationManager manager = TranslationManager.instance();
+        TranslationManager manager = new TranslationManager();
 
         // This will scan a file for translatable objects
         try {
@@ -24,7 +24,7 @@ public class TranslationMain {
         manager.addTranslation("potatoes", new TranslationAsset(null, "potatooooes", TranslationLanguage.swedishSwedish));
 
         // Create the file, read from it, and add the stuff to the manager
-        TranslationFile swedish = new YamlTranslationFile(new File("C:\\Users\\Citymonstret\\Pictures\\IntellectualChat\\profiles\\debug"), TranslationLanguage.swedishSwedish, "potatoes")
+        TranslationFile swedish = new YamlTranslationFile(new File("C:\\Users\\Citymonstret\\Pictures\\IntellectualChat\\profiles\\debug"), TranslationLanguage.swedishSwedish, "potatoes", manager)
         .read().fancyHeader("Hello", "my", "name", "is", "alex");
 
         TranslationFile file = new JsonTranslationFile(new File("C:\\Users\\Citymonstret\\Pictures\\IntellectualChat\\profiles\\debug"), TranslationLanguage.swedishSwedish, "potatoes")

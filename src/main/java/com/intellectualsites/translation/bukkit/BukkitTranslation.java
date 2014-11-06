@@ -46,8 +46,7 @@ public class BukkitTranslation {
      * Add material names to the translation list
      * Will default to a somewhat friendly name
      */
-    public static void addMaterials() {
-        TranslationManager manager = TranslationManager.instance();
+    public static void addMaterials(TranslationManager manager) {
         for(Material material : Material.values()) {
             manager.addTranslationObject(
                     new TranslationObject(material.name(), material.name().replace("_", " ").toLowerCase(), "Material." + material.toString(), "")

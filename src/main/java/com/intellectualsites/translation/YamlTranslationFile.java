@@ -27,6 +27,7 @@ public class YamlTranslationFile extends TranslationFile {
     private String[] header;
     private boolean fancyHead = false;
     private YamlTranslationFile instance;
+    private TranslationManager manager;
 
     /**
      * Constructor
@@ -34,10 +35,11 @@ public class YamlTranslationFile extends TranslationFile {
      * @param language translation language
      * @param name project name
      */
-    public YamlTranslationFile(File path, TranslationLanguage language, String name) {
+    public YamlTranslationFile(File path, TranslationLanguage language, String name, TranslationManager manager) {
         this.path = path;
         this.language = language;
         this.name = name;
+        this.manager = manager;
         if(!path.exists()) {
             if(!path.mkdirs()) {
                 throw new RuntimeException("Could not create: " + path.getAbsolutePath());
@@ -136,7 +138,7 @@ public class YamlTranslationFile extends TranslationFile {
             for(Map.Entry<String, String> entry : map.entrySet()) {
                 String var = entry.getKey();
                 String val = entry.getValue();
-                String des = TranslationManager.instance().getDescription(var);
+                String des = manager.getDescription(var);
                 if(des.equals(""))
                     writer.write(var + ": '" + val + "'" + (current < length - 1 ? "\n" : ""));
                 else
@@ -189,7 +191,7 @@ public class YamlTranslationFile extends TranslationFile {
         for(Map.Entry<String, String> objects : map.entrySet()) {
             String key = objects.getKey();
             String val = objects.getValue();
-            TranslationManager.instance().addTranslation(
+            manager.addTranslation(
                 key,
                 new TranslationAsset(null, val, language)
             );

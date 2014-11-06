@@ -2,7 +2,7 @@ package com.intellectualsites.translation;
 
 public class TranslationObject {
 
-    // join-message
+    // can include a suffix
     private String key;
     //The default ("no-translation" value)
     private String defaultValue;

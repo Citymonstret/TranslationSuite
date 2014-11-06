@@ -7,17 +7,14 @@ import java.util.*;
 
 public class TranslationManager {
 
-    private static TranslationManager manager;
+    private TranslationManager instance;
 
-    public static TranslationManager instance(TranslationObject[] translationObjects) {
-        if(manager == null) {
-            manager = new TranslationManager(translationObjects);
-        }
-        return manager;
+    public TranslationManager() {
+        this(new TranslationObject[]{});
     }
 
-    public static TranslationManager instance() {
-        return instance(new TranslationObject[]{});
+    public TranslationManager instance() {
+        return this;
     }
 
     private LinkedList<TranslationObject> translationObjects;
@@ -32,6 +29,7 @@ public class TranslationManager {
                 = new LinkedList<TranslationObject>(Arrays.asList(translationObjects));
         this.translatedObjects
                 = new LinkedHashMap<String, TranslationAsset>();
+        instance = this;
     }
 
     public TranslationManager addTranslationObject(TranslationObject t) {
@@ -118,10 +116,10 @@ public class TranslationManager {
     }
 
     public TranslationManager debug(PrintStream out) {
-        for(TranslationObject object : manager.translations()) {
+        for(TranslationObject object : translations()) {
             out.println(object.getKey() + ":");
             for(TranslationLanguage language : TranslationLanguage.values()) {
-                out.println(language.toString() + ": " + manager.getTranslated(object.getKey(), language).getTranslated());
+                out.println(language.toString() + ": " + getTranslated(object.getKey(), language).getTranslated());
             }
         }
         return instance();
