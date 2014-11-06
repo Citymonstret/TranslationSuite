@@ -1,6 +1,6 @@
-package com.intellectualsites.translation;
+package com.intellectualsites.translation.test;
 
-import com.intellectualsites.translation.test.TestAnnotations;
+import com.intellectualsites.translation.*;
 
 import java.io.File;
 

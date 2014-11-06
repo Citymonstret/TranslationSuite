@@ -6,7 +6,7 @@
     <name>TranslationSuite</name>
     <groupId>com.intellectualsites</groupId>
     <artifactId>TranslationAPI</artifactId>
-    <version>1.5-SNAPSHOT</version>
+    <version>1.0</version>
     <build>
         <finalName>${artifactId}-${version}</finalName>
         <resources>
