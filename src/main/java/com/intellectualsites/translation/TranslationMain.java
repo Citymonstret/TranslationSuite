@@ -27,11 +27,11 @@ public class TranslationMain {
         TranslationFile swedish = new YamlTranslationFile(new File("C:\\Users\\Citymonstret\\Pictures\\IntellectualChat\\profiles\\debug"), TranslationLanguage.swedishSwedish, "potatoes")
         .read().fancyHeader("Hello", "my", "name", "is", "alex");
 
-        TranslationFile english = new YamlTranslationFile(new File("C:\\Users\\Citymonstret\\Pictures\\IntellectualChat\\profiles\\debug"), TranslationLanguage.englishAmerican, "potatoes")
-        .read().fancyHeader("This", "is", "in", "english!");
+        TranslationFile file = new JsonTranslationFile(new File("C:\\Users\\Citymonstret\\Pictures\\IntellectualChat\\profiles\\debug"), TranslationLanguage.swedishSwedish, "potatoes")
+                .read();
 
         // This will save all translations to the file, then save the file to the disk
-        manager.debug(System.out).saveAll(swedish).saveFile(swedish).saveAll(english).saveFile(swedish);
+        manager.debug(System.out).saveAll(swedish).saveFile(swedish).saveAll(file).saveFile(file);
 
         String str = manager.getTranslation("potatoes", TranslationLanguage.swedishSwedish);
         System.out.println(str);
