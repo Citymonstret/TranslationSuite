@@ -1,5 +1,9 @@
 package com.intellectualsites.translation;
 
+/**
+ * Asset
+ * @author Citymonstret
+ */
 public class TranslationAsset {
 
     private TranslationObject trans;
