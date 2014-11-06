@@ -20,7 +20,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalNam>user-${artifactId}-${version}</finalNam>
+                            <finalName>user-${artifactId}-${version}</finalName>
                         </configuration>
                     </execution>
                 </executions>
@@ -29,11 +29,20 @@
     </build>
     <repositories>
         <repository>
+            <id>BungeeCord-repo</id>
+            <url>https://oss.sonatype.org/content/groups/public/</url>
+        </repository>
+        <repository>
             <url>http://repo.bukkit.org/content/groups/public/</url>
             <id>bukkit-repo</id>
         </repository>
     </repositories>
     <dependencies>
+        <dependency>
+            <groupId>net.md-5</groupId>
+            <artifactId>bungeecord-api</artifactId>
+            <version>1.8-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
