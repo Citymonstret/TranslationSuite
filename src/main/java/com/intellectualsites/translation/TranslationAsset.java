@@ -17,7 +17,7 @@ public class TranslationAsset {
     }
 
     public String getTranslated() {
-        return translated;
+        return translated.replace("\n", "&-");
     }
 
     public TranslationLanguage getLang() {
