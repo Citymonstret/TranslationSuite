@@ -1,6 +1,17 @@
 TranslationSuite
 ================
 
+ProGuard
+--
+If you are obfuscating your plugin using ProGuard, then this is an important step:
+
+```
+-keepclassmembers class com.intellectualsites.prison.Configuration {
+    private static <fields>;
+}
+```
+replace the class name with your own class name (every class that contains @Translation)
+
 Desc
 --
 Java translation file implementation
