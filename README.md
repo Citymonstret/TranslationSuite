@@ -17,7 +17,7 @@ If you are obfuscating your plugin using ProGuard, then this is an important ste
     private static <fields>;
 }
 ```
-replace the class name with your own class name (every class that contains @Translation)
+Replace the class name with your own class name (every class that contains @Translation)
 
 Desc
 --
@@ -31,6 +31,24 @@ The json parser json-io and json-simple (included in the pom.xml)
 Yaml
 --
 The YAML parser requires SnakeYaml (included in the pom.xml) 
+
+@Translation
+--
+The most efficient way to create translations is by using the @Translation annotation.
+To load the translations use TranslationManager#scan()
+
+To create a translation do:
+
+```java
+@Translation( description = "optional comment (will show up in YAML)" )
+public static TRANSLATION_KEY = "default value";
+
+// you can also use private fields
+
+@Translation
+private static other_translation = "another default value";
+```
+The key will be converted to lowercase, so make sure to not make duplicate keys.
 
 Examples
 --
