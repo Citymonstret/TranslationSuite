@@ -1,6 +1,13 @@
 TranslationSuite
 ================
 
+Maven/Building
+--
+To build the program using maven, use
+```
+mvn package
+```
+
 ProGuard
 --
 If you are obfuscating your plugin using ProGuard, then this is an important step:
