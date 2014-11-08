@@ -143,14 +143,14 @@ public class YamlTranslationFile extends TranslationFile {
             }
             int length = map.size();
             int current = 0;
-            for(Map.Entry<String, String> entry : map.entrySet()) {
+            for (Map.Entry<String, String> entry : map.entrySet()) {
                 String var = entry.getKey();
                 String val = entry.getValue();
                 String des = manager.getDescription(var);
-                if(des.equals(""))
-                    writer.write(var + ": '" + val + "'" + (current < length - 1 ? "\n" : ""));
+                if (des.equals(""))
+                    writer.write(var + ": \"" + val + "\"" + (current < length - 1 ? "\n" : ""));
                 else
-                    writer.write(des + "\n" + var + ": '" + val + "'" + (current < length - 1 ? "\n" : ""));
+                    writer.write(des + "\n" + var + ": \"" + val + "\"" + (current < length - 1 ? "\n" : ""));
                 ++current;
             }
             writer.close();
@@ -174,7 +174,7 @@ public class YamlTranslationFile extends TranslationFile {
             options.setAllowUnicode(true);
             options.setPrettyFlow(true);
             options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-            options.setDefaultScalarStyle(DumperOptions.ScalarStyle.SINGLE_QUOTED);
+            options.setDefaultScalarStyle(DumperOptions.ScalarStyle.DOUBLE_QUOTED);
             yaml = new Yaml(options);
             yaml.setName(name + "." + language.toString());
         }
