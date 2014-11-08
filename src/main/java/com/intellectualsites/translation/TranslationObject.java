@@ -1,17 +1,25 @@
 package com.intellectualsites.translation;
 
+import com.sun.istack.internal.NotNull;
+
 public class TranslationObject {
 
-    // can include a suffix
+    // can include a suffix | not null
     private String key;
-    //The default ("no-translation" value)
+    //The default ("no-translation" value) | not null
     private String defaultValue;
-    // ... "Join message" ...
+    // ... "Join message" ... | can be null
     private String description;
-    // Like a plugin name for example
+    // Like a plugin name for example | can be null
     private String creationDescription;
 
-    public TranslationObject(String key, String defaultValue, String description, String creationDescription) {
+    public TranslationObject(@NotNull String key, @NotNull String defaultValue, String description, String creationDescription) {
+        if(description == null) {
+            description = "";
+        }
+        if(creationDescription == null) {
+            creationDescription = "";
+        }
         for(char c : key.toCharArray()) {
             if(!Character.isDigit(c) && !Character.isAlphabetic(c) && c != '_' && c != '&' && c != '§' && c != ':') {
                 throw new RuntimeException(

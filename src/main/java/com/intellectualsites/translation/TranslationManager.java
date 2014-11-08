@@ -5,25 +5,55 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.*;
 
+/**
+ * Translation Manager Main class
+ *
+ * @author Citymonstret
+ */
 public class TranslationManager {
 
+    /**
+     * The instance
+     */
     private TranslationManager instance;
 
+    /**
+     * Constructor
+     */
     public TranslationManager() {
         this(new TranslationObject[]{});
     }
 
+    /**
+     * Don't use this!
+     * @return this
+     */
     public TranslationManager instance() {
         return this;
     }
 
+    /**
+     * Objects
+     */
     private LinkedList<TranslationObject> translationObjects;
+
+    /**
+     * The translations
+     */
     private LinkedHashMap<String, TranslationAsset> translatedObjects;
 
+    /**
+     * Get the translation objects
+     * @return objects
+     */
     public List<TranslationObject> translations() {
         return translationObjects;
     }
 
+    /**
+     * Constructor
+     * @param translationObjects pre-init
+     */
     public TranslationManager(TranslationObject[] translationObjects) {
         this.translationObjects
                 = new LinkedList<TranslationObject>(Arrays.asList(translationObjects));
@@ -32,11 +62,21 @@ public class TranslationManager {
         instance = this;
     }
 
+    /**
+     * Add an object
+     * @param t object
+     * @return instance
+     */
     public TranslationManager addTranslationObject(TranslationObject t) {
         translationObjects.add(t);
         return instance();
     }
 
+    /**
+     * Remove an object
+     * @param t object
+     * @return instance
+     */
     public TranslationManager removeTranslationObject(TranslationObject t) {
         translationObjects.remove(t);
         return instance();
@@ -102,6 +142,16 @@ public class TranslationManager {
             file.add(object.getKey(), o.getTranslated());
         }
         return instance();
+    }
+
+    public static List<TranslationObject> transformEnum(Object[] os) {
+        List<TranslationObject> eList = new ArrayList<TranslationObject>();
+        for(Object o : os) {
+            eList.add(
+                    new TranslationObject(o.toString(), o.toString().toLowerCase().replace("_", " "), "", "")
+            );
+        }
+        return eList;
     }
 
     public static void scan(Class c, TranslationManager manager) throws IllegalAccessException {

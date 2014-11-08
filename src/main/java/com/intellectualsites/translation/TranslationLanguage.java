@@ -36,6 +36,9 @@ public class TranslationLanguage {
             = (new TranslationLanguage("British English", "gb", "en"));
     public static final TranslationLanguage swedishSwedish
             = (new TranslationLanguage("Swedish", "sv", "se"));
+    public static final TranslationLanguage russianRussian
+            = (new TranslationLanguage("Russian", "ru", "ru"));
+
 
     public static TranslationLanguage[] values() {
         return new TranslationLanguage[]{
